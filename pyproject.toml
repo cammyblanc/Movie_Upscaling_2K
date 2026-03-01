@@ -1,0 +1,43 @@
+[project]
+name = "upscaling"
+version = "0.1.0"
+description = "Analog Video Restoration with RTX 3080 Ti"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cupy-cuda12x>=13.3.0",
+    "numpy",
+    "opencv-python",
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "tqdm",
+    "basicsr",
+    "facexlib",
+    "gfpgan",
+    "realesrgan",
+    "imageio[ffmpeg]>=2.37.2",
+    "vapoursynth>=73",
+    "vsexprtools>=1.8.3",
+    "vsutil>=0.8.0",
+    "vstools>=3.4.5",
+    "vsmasktools>=1.4.3",
+    "vsrgtools>=1.9.2",
+    "rvsfunc>=0.1.2.1",
+    "vsdenoise>=2.8.3",
+    "vssource>=0.12.4",
+    "havsfunc>=34",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu121" }
+torchvision = { index = "pytorch-cu121" }
+torchaudio = { index = "pytorch-cu121" }
+# ここで「GitHubの最新版（3.12対応）」を使うよう全パッケージに強制します
+basicsr = { git = "https://github.com/xinntao/BasicSR.git" }
+realesrgan = { git = "https://github.com/xinntao/Real-ESRGAN.git" }
